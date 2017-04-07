@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class RandomGame {
 	
 	int randomNumber;
-	boolean createdRandom = false;
-	private Scanner s;
+	private boolean createdRandom = false;
 	private int userInput;
 	
 	public static void main(String args[]) {
@@ -17,29 +16,29 @@ public class RandomGame {
 	}
 
 	private void runGame() {
-		if (createdRandom == false) {
-			randomNumber = generateRandomCode();
-			createdRandom = true;
+		randomNumber = generateRandomCode();
+		
+		for (i = 1; i < 6; i++) {
+		        s = new Scanner(System.in);
+		        System.out.println("Enter your guess, guesses are between 0 and 10:");
+		
+		        try {
+			        userInput = s.nextInt();
+		        } catch (InputMismatchException e) {
+			       System.out.println("You can't enter words!");
+			       System.err.println("InputMismatchException: " + e.getMessage());
+			       System.out.println("An InputMismatchException occured! " + e.getMessage());
+			       System.exit(1);
+		        }
+		
+		        if (userInput == randomNumber) {
+		                System.out.println("You won!");
+		        } else {
+		                System.out.println("You haven't entered the correct code!")
+		        }
 		}
 		
-		s = new Scanner(System.in);
-		System.out.println("Enter your guess, guesses are between 0 and 10:");
-		
-		try {
-			userInput = s.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("You can't enter words!");
-			System.err.println("InputMismatchException: " + e.getMessage());
-			System.out.println("An InputMismatchException occured! " + e.getMessage());
-			System.exit(1);
-		}
-		
-		if (userInput == randomNumber) {
-			System.out.println("You won!");
-		} else {
-			System.out.println("You haven't entered the correct code!");
-			runGame();
-		}
+		System.out.println("You lost...")
 	}
 
 	private int generateRandomCode() {
